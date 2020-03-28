@@ -14,9 +14,8 @@ const userSchema = new mongoose.Schema({
     required: true
   },
   avatar: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    ref: 'avatar'
+    type: String,
+    required: true
   }
 });
 

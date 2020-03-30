@@ -1,4 +1,25 @@
+//{
+ // "extends": "airbnb-base",
+ // "no-underscore-dangle": ["error", { "allow": ["_id"] }]
+//}
+
 {
+  "env": {
+  "browser": true,
+  "es6": true
+  },
   "extends": "airbnb-base",
-  "allow": ["_id"]
-}
+  "globals": {
+  "Atomics": "readonly",
+  "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+  "ecmaVersion": 2018,
+  "sourceType": "module"
+  },
+  "rules": {
+  "indent": ["error", "tab"],
+  "no-tabs": 0,
+  "no-underscore-dangle": ["error", { "allow": ["_id"] }]
+  }
+  }

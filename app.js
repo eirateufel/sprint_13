@@ -9,17 +9,17 @@ const usersRouter = require('./routes/users.js');
 const cardsRouter = require('./routes/cards.js');
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false
+	useNewUrlParser: true,
+	useCreateIndex: true,
+	useFindAndModify: false,
 });
 
 app.use((req, res, next) => {
-  req.user = {
-      _id: '5e80f03e42ed865048e4e58a' // вставьте сюда _id созданного в предыдущем пункте пользователя
-  };
+	req.user = {
+		_id: '5e80f03e42ed865048e4e58a', // вставьте сюда _id созданного в предыдущем пункте пользователя
+	};
 
-  next();
+	next();
 });
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
@@ -27,5 +27,5 @@ app.use('/', cardsRouter);
 app.use('/', usersRouter);
 
 app.listen(PORT, () => {
-   console.log('Im running');
+	// console.log('Im running');
 });

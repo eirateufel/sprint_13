@@ -1,4 +1,3 @@
-const fs = require('fs');
 const cardsRouter = require('express').Router();
 const { getCards, createCard, removeCard } = require('../controllers/cards');
 

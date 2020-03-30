@@ -13,3 +13,9 @@ module.exports.createCard = (req, res) => {
     .then(card => res.send({ data: card }))
     .catch(() => res.status(500).send({ message: 'Произошла ошибка' }));
 };
+
+module.exports.removeCard = (req, res) => {
+  Card.findByIdAndRemove(req.params.cardId)
+    .then(user => res.send({ data: user }))
+    .catch(err => res.status(500).send({ message: 'Произошла ошибка' }));
+};

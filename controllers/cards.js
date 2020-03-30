@@ -8,8 +8,8 @@ module.exports.getCards = (req, res) => {
 
 module.exports.createCard = (req, res) => {
   const { name, link } = req.body;
-  const { owner } = req.user._id;
-  User.create({ name, link, owner })
+  const  owner  = req.user._id;
+  Card.create({ name, link, owner })
     .then(card => res.send({ data: card }))
     .catch(() => res.status(500).send({ message: 'Произошла ошибка' }));
 };
@@ -17,5 +17,5 @@ module.exports.createCard = (req, res) => {
 module.exports.removeCard = (req, res) => {
   Card.findByIdAndRemove(req.params.cardId)
     .then(user => res.send({ data: user }))
-    .catch(err => res.status(500).send({ message: 'Произошла ошибка' }));
+    .catch(() => res.status(500).send({ message: 'Произошла ошибка' }));
 };

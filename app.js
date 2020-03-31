@@ -12,11 +12,13 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 	useNewUrlParser: true,
 	useCreateIndex: true,
 	useFindAndModify: false,
-});
+})
+	.then(() => console.log('Соединение с базой данных установлено'))
+	.catch((err) => console.log(err.message));
 
 app.use((req, res, next) => {
 	req.user = {
-		_id: '5e80f03e42ed865048e4e58a', // вставьте сюда _id созданного в предыдущем пункте пользователя
+		_id: '5e80f03e42ed865048e4e58a',
 	};
 
 	next();

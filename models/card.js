@@ -23,7 +23,7 @@ const cardSchema = new mongoose.Schema({
 		required: true,
 		ref: 'user',
 	},
-	likes: [{ // сомнени по поводу этого пункта, но нет идей, как сделать правильней.
+	likes: [{
 		type: mongoose.Schema.Types.ObjectId,
 		default: [],
 		ref: 'user',

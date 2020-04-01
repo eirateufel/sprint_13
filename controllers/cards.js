@@ -15,22 +15,7 @@ module.exports.createCard = (req, res) => {
 };
 
 module.exports.removeCard = (req, res) => {
-	Card.findById(req.params.cardId)
-		.then((card) => (JSON.stringify(card.owner) === JSON.stringify(req.user._id)))
-		.then((result) => {
-			if (result) {
-				Card.findByIdAndRemove(req.params.cardId)
-				// не уверена насчет правильности вложенности промисов, но это компактней,
-				// чем заводить отдельную переменную под result и потом работать с ней
-					.then((user) => res.send({ data: user }))
-					.catch((err) => res.status(500).send({ message: err.message }));
-			} else {
-				res.status(403).send({ message: 'Недостаточно прав' });
-			}
-		})
-		.catch((err) => {
-			if (err.name === 'CastError') {
-				res.status(404).send({ message: `Карточка ${err.value} не найдена` });
-			} else { res.status(500).send({ message: err.message }); }
-		});
+	Card.findByIdAndRemove(req.params.cardId)
+		.then((user) => res.send({ data: user }))
+		.catch((err) => res.status(500).send({ message: err.message }));
 };

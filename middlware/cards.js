@@ -13,7 +13,7 @@ module.exports.doesCardExist = (req, res, next) => {
 module.exports.checkOwner = (req, res, next) => {
 	Card.findById(req.params.cardId)
 		.then((card) => {
-			if (JSON.stringify(card.owner) === JSON.stringify(req.user._id)) { next(); } else { res.status(403).send({ message: 'Недостаточно прав' }); }
+			if (card.owner.toString() === req.user._id.toString()) { next(); } else { res.status(403).send({ message: 'Недостаточно прав' }); }
 		})
 		.catch((err) => {
 			res.status(500).send({ message: err.message });

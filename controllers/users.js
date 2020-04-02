@@ -20,7 +20,7 @@ module.exports.createUser = (req, res) => {
 		.then((user) => res.send({ data: user }))
 		.catch((err) => {
 			if (err.name === 'ValidationError') {
-				res.status(400).send({ message: `Введенные данные некорректны: ${err.errors.name.message}` });
+				res.status(400).send({ message: `Введенные данные некорректны: ${err.message}` });
 			} else {
 				res.status(500).send({ message: err });
 			}
